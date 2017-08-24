@@ -10,7 +10,7 @@ class Puc extends Model
 
 	protected $primaryKey = 'nro_cuenta';
 
-	protected $fillable = ['nro_cuenta', 'nombre_cuenta', 'clase'];
+	protected $fillable = ['nro_cuenta', 'nombre_cuenta', 'clase', 'estado'];
 
 	//protected $hidden = ['password', 'remember_token'];
 

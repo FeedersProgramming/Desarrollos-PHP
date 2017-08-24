@@ -45,6 +45,7 @@
                 <th>Cuenta</th>
                 <th>Nombre</th>
                 <th>Clase</th>
+                <th>Estado</th>
                 <th>Accion</th>
               </tr>
             </thead>
@@ -54,6 +55,13 @@
                 <td>{{ $pu->nro_cuenta }}</td>
                 <td>{{ $pu->nombre_cuenta }}</td>
                 <td>{{ $pu->clase }}</td>
+
+                @if($pu->estado == 1)
+                <td>Activo</td> 
+                @else
+                <td>Inactivo</td>
+                @endif
+                
                 <td>
                   <a href=" {{ route('puc.edit', $pu->nro_cuenta) }} " class="glyphicon glyphicon-pencil btn btn-info"></a>
                   <a href=" {{ route('puc.destroy', $pu->nro_cuenta) }} " onclick="return confirm('¿Seguro Desea Eliminarlo?')" class="glyphicon glyphicon-trash btn btn-danger"></a>

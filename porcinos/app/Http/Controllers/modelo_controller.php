@@ -84,12 +84,12 @@ class modelo_controller extends Controller
 
       for($i = 1; $i <= $request->txtnorestricciones; $i++){
         for($y = 1; $y <= $request->txtnovariables; $y++){
-           DB::insert('INSERT INTO modelo_stock(id_modelo, columna, fila, valor) VALUES (?, ?, ?, ?)', [$cont, $i, $y, $array['txtr'.$i.'x'.$y]]); 
+         DB::insert('INSERT INTO modelo_stock(id_modelo, columna, fila, valor) VALUES (?, ?, ?, ?)', [$cont, $i, $y, $array['txtr'.$i.'x'.$y]]); 
 
-       }    
-   }
+     }    
+ }
 
-   for($y = 1; $y <= $request->txtnorestricciones; $y++){
+ for($y = 1; $y <= $request->txtnorestricciones; $y++){
     DB::insert('INSERT INTO modelo_stock(id_modelo, columna, fila, accion) VALUES (?, ?, ?, ?)', [$cont, 0, $y, $array['cmbr'.$y]]);
 
     DB::insert('INSERT INTO modelo_stock(id_modelo, columna, fila, valor) VALUES (?, ?, ?, ?)', [$cont, 0, $y, $array['txtrhs'.$y]]);

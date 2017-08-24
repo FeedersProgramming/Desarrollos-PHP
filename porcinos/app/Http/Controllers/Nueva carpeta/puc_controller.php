@@ -27,7 +27,7 @@ class puc_controller extends Controller
     public function index(Request $request)
     {   
         //dd($request->busqueda);
-        $puc = Puc::orderBy('nro_cuenta', 'ASC')->paginate(10);
+        $puc = Puc::orderBy('nro_cuenta', 'ASC')->paginate(5);
 
         //dd($request->busqueda);
         return view('pagina.puc.puc')->with('puc', $puc);
@@ -53,7 +53,7 @@ class puc_controller extends Controller
     {   
         //dd($request->nro_cuenta);
 
-        DB::insert('insert into puc (nro_cuenta, nombre_cuenta, clase) values (?, ?, ?)', [$request->nro_cuenta, $request->nombre_cuenta, $request->clase]);
+        DB::insert('insert into puc (nro_cuenta, nombre_cuenta, clase, estado) values (?, ?, ?, ?)', [$request->nro_cuenta, $request->nombre_cuenta, $request->clase, $request->estado]);
         //$puc = new Puc($request->all());
         //$puc->save();
         Flash::success("Se ha Creado La Cuenta " . $request->nombre_cuenta . ' ' . $request->clase);
@@ -93,7 +93,7 @@ class puc_controller extends Controller
     public function update(Request $request, $id)
     {
 
-        DB::update('UPDATE puc SET nombre_cuenta=?, clase=? WHERE nro_cuenta = ?', [$request->nombre_cuenta, $request->clase, $request->nro_cuenta]);
+        DB::update('UPDATE puc SET nombre_cuenta=?, clase=?, estado=? WHERE nro_cuenta = ?', [$request->nombre_cuenta, $request->clase, $request->nro_cuenta, $request->estado]);
         Flash::warning("Se ha Editado La Cuenta " . $request->nombre_cuenta . ' ' . $request->clase);
 
         return redirect()->route('puc.index');

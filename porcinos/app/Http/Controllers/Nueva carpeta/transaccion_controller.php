@@ -19,8 +19,8 @@ use DB;
 class transaccion_controller extends Controller
 {
 
-   public function __construct()
-   {
+ public function __construct()
+ {
     $this->middleware('auth');
 
 }
@@ -48,9 +48,9 @@ public function index(Request $request)
     public function create()
     {
 
-        $puc = Puc::orderBy('nro_cuenta', 'ASC')->get();
+        $puc = Puc::orderBy('nro_cuenta', 'ASC')->WHERE('estado', 1)->get();
         //$pacientes = User::where('tipo', '!=', 'medico')->orderBy('id', 'ASC')->lists('nombre', 'id');
-
+        //dd('0jj');
         $array_puc = array();
 
         foreach ($puc as $p) {
